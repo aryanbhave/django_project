@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import CardComponent from './CardComponent';
 import Navbar from './Navbar'
+import SimpleTable from './SimpleTable';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

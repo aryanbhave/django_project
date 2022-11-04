@@ -9,8 +9,12 @@ import { Table } from "@mui/material";
 
 function App() {
   return (
-         
+    <>
+     <Navbar/>
       <SimpleTable/>     
+    
+    </>
+     
       
   );
 }
