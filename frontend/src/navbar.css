@@ -2,14 +2,24 @@
 .navbar{
   display: flex;
   width: 100%;
-  background-color: #264653;
+  align-items: center;
+  height: 70px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+  background-image: linear-gradient(#0020FF,#334CFF,#7687FF);
+  justify-content: space-between;
   color: white;
 
 }
 
-.branding{
-
+.person_icon{
+  color:white;
 }
+
+.message_icon{
+  color: white;
+}
+
+
 
 .loginButton{
   background-color: white;
