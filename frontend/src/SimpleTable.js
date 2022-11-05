@@ -1,7 +1,5 @@
 import React from 'react';
 import "./App.css"
-import { DataGrid } from '@mui/x-data-grid';
-import ReactTable from "react-table";  
 
 
 
