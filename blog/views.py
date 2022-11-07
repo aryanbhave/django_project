@@ -5,11 +5,19 @@ from users.models import referrer
 
 # Create your views here.
 def home(request):
-    context = {
-        'posts': Post.objects.all(),
-        'query_results' : referrer.objects.all()
-    }
-    return render(request, 'blog/home.html', context)
+    if request.GET.get('query', None):
+        query = request.GET.get('query', None)
+        context = {
+            'posts': Post.objects.all(),
+            'query_results' : referrer.objects.all().filter(company=query)
+        }
+        return render(request, 'blog/home.html', context)
+    else:
+        context = {
+            'posts': Post.objects.all(),
+            'query_results' : referrer.objects.all()
+        }
+        return render(request, 'blog/home.html', context)
 
 
 def about(request):
