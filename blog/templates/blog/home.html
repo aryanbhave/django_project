@@ -1,21 +1,24 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1 class="">Blog Home (HTML File)</h1>
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                </div>
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
-            </div>
-        </article>
-        <!-- 
-            <h1>{{post.title}}</h1>
-            <p>By {{post.author}} on {{post.date_posted}}</p>
-            <p>{{post.content}}</p> 
-        -->
-    {% endfor %}
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in query_results %}
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>     
+                    <td>{{ item.email }}</td> 
+                    <td>{{ item.company }}</td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content%}
