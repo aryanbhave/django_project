@@ -4,17 +4,20 @@
         <input type="button" onclick="window.location.href='{% url 'register' %}'" value="Become a Referrer" />
     </form>
     <br> -->
-    <form action="" method="GET">
-        <input class="form-control" type="text" name="query" placeholder="Filter by Company or Name"><br/>
-    </form>
+    <!-- <br> -->
+    <div>
+        <form action="" method="GET">
+            <input class="form-control" type="text" name="query" placeholder="Filter by Company or Name"><br/>
+        </form>
+    </div>
     <br>
-    <table class="table table-bordered">
-        <thead class="table-dark">
+    <table class="table table-borderless table-hover table-responsive">
+        <thead style="position: fixed-top" class="table-dark">
             <tr>
-                <th scope="col">Name</th>
+                <th  scope="col">Name</th>
                 <!-- <th scope="col">Last Name</th> -->
-                <th scope="col">Email</th>
-                <th scope="col">Company</th>
+                <th  scope="col">Email</th>
+                <th  scope="col">Company</th>
             </tr>
         </thead>
         <tbody>
