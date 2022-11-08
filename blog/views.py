@@ -9,12 +9,12 @@ def home(request):
         query = request.GET.get('query', None)
         context = {
             'title': "Home",
-            'query_results' : referrer.objects.all().filter(company=query)
+            'query_results' : referrer.objects.all().filter(company=query).order_by('firstName') | referrer.objects.all().filter(firstName=query).order_by('company') | referrer.objects.all().filter(lastName=query).order_by('company')
         }
         return render(request, 'blog/home.html', context)
     else:
         context = {
-            'query_results' : referrer.objects.all()
+            'query_results' : referrer.objects.all().order_by('company')
         }
         return render(request, 'blog/home.html', context)
 
