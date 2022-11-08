@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .models import referrer
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(request):
@@ -31,4 +32,15 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == "POST":
+        #Remove user from referrer database and auth users as well.
+        query = request.POST.get('usernameTBD', None)
+        print(query)
+        referrer.objects.all().filter(username=query).delete()
+        User.objects.all().filter(username=query).delete()
+
+        #Check existence of username in database
+        messages.success(request, f'Your account has been successfully deleted. We are sorry to see you go!')
+        return redirect('logout')
+    else:  
+        return render(request, 'users/profile.html')

@@ -1,5 +1,9 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="search" name="usernameTBD" placeholder="Type in your username">
+        <input type="submit" name="query" placeholder="Delete Your Profile" onclick="location.href='blog-home';"><br/>
+    </form>
 {% endblock content %}
