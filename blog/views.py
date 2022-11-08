@@ -9,7 +9,7 @@ def home(request):
         query = request.GET.get('query', None)
         context = {
             'title': "Home",
-            'query_results' : referrer.objects.all().filter(company=query).order_by('firstName') | referrer.objects.all().filter(firstName=query).order_by('company') | referrer.objects.all().filter(lastName=query).order_by('company')
+            'query_results' : referrer.objects.all().filter(company=query).order_by('firstName') | referrer.objects.all().filter(firstName=query).order_by('lastName') | referrer.objects.all().filter(lastName=query).order_by('firstName')
         }
         return render(request, 'blog/home.html', context)
     else:
