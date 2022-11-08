@@ -1,6 +1,36 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+    <h6>Your username is {{userDB.first.username}}</h6>
+    <br>
+    <p>
+        The following table is for debugging and checking database sync only.
+        Remove it before deplyoing for demo. 
+    </p>
+    <table class="table table-borderless table-hover table-responsive">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">DB</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>USER</td>
+                <td>{{ userDB.first.first_name }} {{ userDB.first.last_name }}</td>
+                <td>{{ userDB.first.email }}</td>  
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td>REFERRER</td>
+                <td>{{ referrerDB.first.firstName }} {{ referrerDB.first.lastName }}</td>
+                <td>{{ referrerDB.first.email }}</td> 
+                <td>{{ referrerDB.first.company }}</td> 
+            </tr>
+        </tbody>
+    </table>
     <form action="" method="POST">
         {% csrf_token %}
         <h4>Change First Name</h4>
@@ -12,6 +42,9 @@
         <h4>Change Email</h4>
         <input type="search" name="changeEmail" placeholder="Type your email">
         <input type="submit" name="query" placeholder="Change your Email" onclick="location.href='profile';"><br/>
+        <h4>Change Company</h4>
+        <input type="search" name="changeCompany" placeholder="Type your company name">
+        <input type="submit" name="query" placeholder="Change your company name" onclick="location.href='profile';"><br/>
         <h4>Delete Profile</h4>
         <input type="search" name="usernameTBD" placeholder="Type your username">
         <input type="submit" name="query" placeholder="Delete Your Profile" onclick="location.href='blog-home';"><br/>

@@ -38,6 +38,7 @@ def profile(request):
         lastNameQuery = request.POST.get('changeSecond', None)
         emailQuery = request.POST.get('changeEmail', None)
         usernamequery = request.POST.get('usernameTBD', None)
+        companyQuery = request.POST.get('changeCompany', None)
 
         if request.user.is_authenticated:
             usernameReq = request.user.username #Originally called username
@@ -51,28 +52,61 @@ def profile(request):
                 User.objects.all().filter(username=usernameReq).update(first_name=firstNameQuery)
                 response = 'Your first name has been changed to ' + str(firstNameQuery)
                 messages.success(request, response)
-                return render(request, 'users/profile.html')
+                context = {
+                    'userDB' : User.objects.all().filter(username=usernameReq),
+                    'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                }
+                return render(request, 'users/profile.html', context)
             elif lastNameQuery:
                 referrer.objects.all().filter(username=usernameReq).update(lastName=lastNameQuery)
                 User.objects.all().filter(username=usernameReq).update(last_name=lastNameQuery)
                 response = 'Your last name has been changed to ' + str(lastNameQuery)
                 messages.success(request, response)
-                return render(request, 'users/profile.html')
+                context = {
+                    'userDB' : User.objects.all().filter(username=usernameReq),
+                    'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                }
+                return render(request, 'users/profile.html', context)
             elif emailQuery:
                 if '@' in emailQuery:
                     referrer.objects.all().filter(username=usernameReq).update(email=emailQuery)
                     User.objects.all().filter(username=usernameReq).update(email=emailQuery)
                     response = 'Your email has been changed to ' + str(emailQuery)
                     messages.success(request, response)
-                    return render(request, 'users/profile.html')
+                    context = {
+                        'userDB' : User.objects.all().filter(username=usernameReq),
+                        'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                    }
+                    return render(request, 'users/profile.html', context)
                 else:
                     messages.info(request, 'Please type a valid email address.')
-                    return render(request, 'users/profile.html')
+                    context = {
+                        'userDB' : User.objects.all().filter(username=usernameReq),
+                        'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                    }
+                    return render(request, 'users/profile.html', context)
+            elif companyQuery:
+                referrer.objects.all().filter(username=usernameReq).update(company=companyQuery)
+                response = 'Your company has been changed to ' + str(companyQuery)
+                messages.success(request, response)
+                context = {
+                    'userDB' : User.objects.all().filter(username=usernameReq),
+                    'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                }
+                return render(request, 'users/profile.html', context)
             else:
                 messages.info(request, 'There was a problem while managing your profile. Please retry.')
-                return render(request, 'users/profile.html')
+                context = {
+                    'userDB' : User.objects.all().filter(username=usernameReq),
+                    'referrerDB' : referrer.objects.all().filter(username=usernameReq)
+                }
+                return render(request, 'users/profile.html', context)
     else:  
-        return render(request, 'users/profile.html')
+        context = {
+                    'userDB' : User.objects.all().filter(username=request.user.username),
+                    'referrerDB' : referrer.objects.all().filter(username=request.user.username)
+        }
+        return render(request, 'users/profile.html', {'userDB' : User.objects.all().filter(username=request.user.username), 'referrerDB' : referrer.objects.all().filter(username=request.user.username)})
 
 
 # def changeData(request, username, fieldTBU, queryInput):
