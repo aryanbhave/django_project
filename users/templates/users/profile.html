@@ -3,7 +3,17 @@
 {% block content %}
     <form action="" method="POST">
         {% csrf_token %}
-        <input type="search" name="usernameTBD" placeholder="Type in your username">
+        <h4>Change First Name</h4>
+        <input type="search" name="changeFirst" placeholder="Type your first name">
+        <input type="submit" name="query" placeholder="Change your First Name" onclick="location.href='profile';"><br/>
+        <h4>Change Last Name</h4>
+        <input type="search" name="changeSecond" placeholder="Type your last name">
+        <input type="submit" name="query" placeholder="Change your Last Name" onclick="location.href='profile';"><br/>
+        <h4>Change Email</h4>
+        <input type="search" name="changeEmail" placeholder="Type your email">
+        <input type="submit" name="query" placeholder="Change your Email" onclick="location.href='profile';"><br/>
+        <h4>Delete Profile</h4>
+        <input type="search" name="usernameTBD" placeholder="Type your username">
         <input type="submit" name="query" placeholder="Delete Your Profile" onclick="location.href='blog-home';"><br/>
     </form>
 {% endblock content %}
