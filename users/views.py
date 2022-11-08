@@ -36,11 +36,16 @@ def profile(request):
         #Remove user from referrer database and auth users as well.
         query = request.POST.get('usernameTBD', None)
         print(query)
-        referrer.objects.all().filter(username=query).delete()
-        User.objects.all().filter(username=query).delete()
 
-        #Check existence of username in database
-        messages.success(request, f'Your account has been successfully deleted. We are sorry to see you go!')
-        return redirect('logout')
+        if request.user.is_authenticated:
+            username = request.user.username
+            if username == query:
+                referrer.objects.all().filter(username=query).delete()
+                User.objects.all().filter(username=query).delete()
+                messages.success(request, f'Your account has been successfully deleted. We are sorry to see you go!')
+                return redirect('logout')
+            else:
+                messages.info(request, 'The username was incorrect.')
+                return render(request, 'users/profile.html')
     else:  
         return render(request, 'users/profile.html')
