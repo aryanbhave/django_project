@@ -14,7 +14,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get("username")
             
-            #Adding data to referrer table in database
+            #Adding data to referrer table in RDS database
             ref = referrer()
             ref.username = form.cleaned_data.get("username")
             ref.firstName = form.cleaned_data.get("first_name")

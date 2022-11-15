@@ -26,12 +26,14 @@ SECRET_KEY = 'django-insecure-ivh0tn(jhiw42(1+$rbnm5eun**g$-pk9#&zfa26)fpl(07o3u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.92.114.103']
+ALLOWED_HOSTS = ['35.92.114.103','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    'bootstrap5',
     'users.apps.UsersConfig',
     'crispy_forms',
     'blog.apps.BlogConfig',
@@ -39,8 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +66,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'frontend','build'),
+            os.path.join(BASE_DIR,'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -90,6 +97,14 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -141,3 +156,17 @@ LOGIN_URL = 'login'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'frontend','build','static'),
 ]
+SITE_ID = 1
+LOGIN_REDIRECT_URL='/referers'
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '489815614961-es7l771j4rstpugp5u3h13gra39rtqt0.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
