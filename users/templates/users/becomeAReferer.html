@@ -74,20 +74,11 @@ working at various companies also are keen on referring people as they are incen
         </div>
       </section>
       <div class="align-items-center justify-content-center">
-        <form class="form-signin" method=POST>
-            {%csrf_token%}
-            <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Tell us something about yourself</h1>
-            <label for="inputUniversity" class="sr-only">University</label>
-            <input  id="inputUniversity" class="form-control"  required autofocus>
-            <label for="inputCompany" class="sr-only">Company</label>
-            <input  id="inputCompany" class="form-control" required>
-            <label for="inputRole" class="sr-only">Role</label>
-            <input  id="inputRole" class="form-control" required>
-            <label for="inputLinkedin" class="sr-only">LinkedIn </label>
-            <input  id="inputLinkedin" class="form-control" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Start Refering</button>
-          </form>    
+      <form action='' method="post">
+          {%csrf_token%}
+          {{form.as_p}}
+          <input type="submit" value="submit" class="btn btn-secondary">
+      </form>
       </div>
       
     </main>

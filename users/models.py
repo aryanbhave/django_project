@@ -10,9 +10,9 @@ class referrer(models.Model):
     university=models.CharField(max_length=150,default='scu')
     company=models.CharField(max_length=150,default='google')
     role=models.CharField(max_length=150,default='sde')
-    linkedin=models.CharField(max_length=150,default='https://linkedin.com/')
+    linkedin=models.URLField(max_length=150,default='https://linkedin.com/')
 
 
-    class Meta:
-        db_table='referrer'
+    def __str__(self):
+        return self.name
 

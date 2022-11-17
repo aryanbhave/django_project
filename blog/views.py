@@ -22,18 +22,13 @@ def home(request):
 
 def referers(request):
     context={
-        'list':User.objects.all()
+        'list':referrer.objects.all()
     }
     if request.user.is_authenticated:
         return render(request,'blog/referers.html',context)
     else:
         return render(request,'login1.html')
 
-def signUpReferer():
-    return User.firstname()
-
-def becomeAReferer(request):
-    return render(request,'blog/becomeAReferer.html')
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})

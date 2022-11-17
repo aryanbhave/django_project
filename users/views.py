@@ -5,10 +5,30 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .models import referrer
 from django.contrib.auth.models import User
-from blog.views import signUpReferer
+from .models import referrer
+from django.http import HttpResponseRedirect
+from .forms import UserRegisterForm
 
 # Create your views here.
-def register(request):
+def becomeAReferer(request):
+    submitted=False
+    if request.method=="POST":
+        form=UserRegisterForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return HttpResponseRedirect('/referers/')
+
+    form=UserRegisterForm
+    return render(request,'users/becomeAReferer.html',{'form':form})
+
+def registerReferer(request):
+    return render(request,'./users/becomeAReferer.html',{})
+
+'''def addReferer(request):
+    return render(request,'users/becomeAReferer.html',{})'''
+
+
+'''def register(request):
     if request.method == "POST":
         
         form = UserRegisterForm(request.POST)
@@ -19,8 +39,8 @@ def register(request):
             
             #Adding data to referrer table in RDS database
             ref = referrer()
-            ref.firstName = signUpReferer()
-            ref.lastName = form.cleaned_data.get("last_name")
+            ref.firstName = form.cleaned_data.get("firstname")
+            ref.lastName = form.cleaned_data.get("lastname")
             ref.university = form.cleaned_data.get("university")
             ref.company = form.cleaned_data.get("company")
             ref.role = form.cleaned_data.get("role")
@@ -31,10 +51,10 @@ def register(request):
             return redirect('referers')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})'''
 
 
-@login_required
+'''@login_required
 def profile(request):
     if request.method == "POST":
         #Remove user from referrer database and auth users as well.
@@ -112,7 +132,7 @@ def profile(request):
         }
         return render(request, 'users/profile.html', {'userDB' : User.objects.all().filter(username=request.user.username), 'referrerDB' : referrer.objects.all().filter(username=request.user.username)})
 
-
+'''
 # def changeData(request, username, fieldTBU, queryInput):
 #     referrer.objects.all().filter(username=username).update(fieldTBU=queryInput)
 #     User.objects.all().filter(username=username).update(fieldTBU=queryInput)
