@@ -158,6 +158,9 @@ STATICFILES_DIRS=[
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL='/referers'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm',}
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         # For each OAuth based provider, either add a ``SocialApp``

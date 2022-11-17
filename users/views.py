@@ -5,26 +5,30 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .models import referrer
 from django.contrib.auth.models import User
+from blog.views import signUpReferer
 
 # Create your views here.
 def register(request):
     if request.method == "POST":
+        
         form = UserRegisterForm(request.POST)
+        print('form created')
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
             
             #Adding data to referrer table in RDS database
             ref = referrer()
-            ref.username = form.cleaned_data.get("username")
-            ref.firstName = form.cleaned_data.get("first_name")
+            ref.firstName = signUpReferer()
             ref.lastName = form.cleaned_data.get("last_name")
-            ref.email = form.cleaned_data.get("email")
-            ref.company = form.cleaned_data.get("groups")
+            ref.university = form.cleaned_data.get("university")
+            ref.company = form.cleaned_data.get("company")
+            ref.role = form.cleaned_data.get("role")
+
             ref.save()
 
             messages.success(request, f'Your account has been created, you can proceed to login.')
-            return redirect('login')
+            return redirect('referers')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})

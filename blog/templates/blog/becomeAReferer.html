@@ -21,7 +21,7 @@
     {% load crispy_forms_tags %}
     {%load account%}
     {% csrf_token %}
-    <link href="../../static/referers.css" rel="stylesheet">
+    <link href="../../static/becomeAReferer.css" rel="stylesheet">
 
   </head>
 
@@ -69,41 +69,27 @@ working at various companies also are keen on referring people as they are incen
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Hola {%user_display user%}!!</h1>
-          <h2 class="jumbotron-heading">Meet the Professionals</h2>
+          <h2 class="jumbotron-heading">Start Referring at your company</h2>
           <p class="lead text-muted">Everyone wants that Referral Bonus</p>
-          <p>
-            <a href="becomeAReferer" class="btn btn-primary my-2">Become a Referrer</a>
-          </p>
         </div>
       </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-            {%for i in list%}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">{{i.username}}</p>
-                  <p class="card-text">{{i.lastName}}</p>
-                  <p class="card-text">{{i.username}}</p>
-                  <p class="card-text">{{i.email}}</p>
-                  <p class="card-text">{{i.company}}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group align-items-center justify-content-center">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Ask To Refer</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {%endfor%}
-          </div>
-        </div>
+      <div class="align-items-center justify-content-center">
+        <form class="form-signin" method=POST>
+            {%csrf_token%}
+            <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Tell us something about yourself</h1>
+            <label for="inputUniversity" class="sr-only">University</label>
+            <input  id="inputUniversity" class="form-control"  required autofocus>
+            <label for="inputCompany" class="sr-only">Company</label>
+            <input  id="inputCompany" class="form-control" required>
+            <label for="inputRole" class="sr-only">Role</label>
+            <input  id="inputRole" class="form-control" required>
+            <label for="inputLinkedin" class="sr-only">LinkedIn </label>
+            <input  id="inputLinkedin" class="form-control" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Start Refering</button>
+          </form>    
       </div>
-
+      
     </main>
 
     <footer class="text-muted">

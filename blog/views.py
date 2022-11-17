@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 from users.models import referrer
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 def home(request):
@@ -20,12 +22,18 @@ def home(request):
 
 def referers(request):
     context={
-        'list':[0,1,2,3,4,5,6,7,8]
+        'list':User.objects.all()
     }
     if request.user.is_authenticated:
         return render(request,'blog/referers.html',context)
     else:
         return render(request,'login1.html')
+
+def signUpReferer():
+    return User.firstname()
+
+def becomeAReferer(request):
+    return render(request,'blog/becomeAReferer.html')
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
