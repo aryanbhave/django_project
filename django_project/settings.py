@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -172,4 +174,5 @@ SOCIALACCOUNT_PROVIDERS = {
             'key': ''
         }
     }
+    
 }
