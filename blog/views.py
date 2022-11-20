@@ -27,7 +27,7 @@ def referers(request):
     if request.user.is_authenticated:
         return render(request,'blog/referers.html',context)
     else:
-        return render(request,'login1.html')
+        return render(request,'login1.html') 
 
 
 def about(request):
