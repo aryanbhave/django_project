@@ -159,6 +159,7 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'frontend','build','static'),
 ]
 SITE_ID = 1
+API_KEY='AIzaSyAfr8DDVZxMwmk2gAUItxCymnUfhfiA3vU'
 LOGIN_REDIRECT_URL='/referers'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
@@ -170,8 +171,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # credentials, or list them here:
         'APP': {
             'client_id': '489815614961-es7l771j4rstpugp5u3h13gra39rtqt0.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
+            'secret': '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',
+            'key': 'AIzaSyAfr8DDVZxMwmk2gAUItxCymnUfhfiA3vU'
         }
     }
     
