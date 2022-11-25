@@ -176,7 +176,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
 
     },
-    'linkedin':{
+    'linkedin_oauth2':{
         'SCOPE':[
             'r_liteprofile',
             'r_emailaddress'
