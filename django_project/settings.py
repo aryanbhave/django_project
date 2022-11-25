@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.github',
 ]
 
@@ -174,6 +174,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': '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',
             'key': 'AIzaSyAfr8DDVZxMwmk2gAUItxCymnUfhfiA3vU'
         }
+
+    },
+    'linkedin':{
+        'SCOPE':[
+            'r_liteprofile',
+            'r_emailaddress'
+        ]
     }
     
 }
