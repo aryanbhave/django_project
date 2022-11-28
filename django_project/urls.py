@@ -34,6 +34,6 @@ urlpatterns = [
     #path('referers/',TemplateView.as_view(template_name='index.html')),
     #path('addReferer',views.addReferer,name='addReferer'),
     path('registerReferer/', views.becomeAReferer, name='registerReferer'),
-
+    path('printCurrentUser/', views.printCurrentUser, name='printCurrentUser'),
     
 ]

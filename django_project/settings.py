@@ -47,9 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin_oauth2',
-    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +142,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
@@ -155,31 +154,26 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'frontend','build','static'),
-]
+
 SITE_ID = 1
-API_KEY='AIzaSyAfr8DDVZxMwmk2gAUItxCymnUfhfiA3vU'
+
 LOGIN_REDIRECT_URL='/referers'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm',}
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '489815614961-es7l771j4rstpugp5u3h13gra39rtqt0.apps.googleusercontent.com',
-            'secret': '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',
-            'key': 'AIzaSyAfr8DDVZxMwmk2gAUItxCymnUfhfiA3vU'
-        }
+ACCOUNT_EMAIL_REQUIRED =True
 
-    },
+SOCIALACCOUNT_PROVIDERS = {
     'linkedin_oauth2':{
         'SCOPE':[
             'r_liteprofile',
-            'r_emailaddress'
+            'r_emailaddress',
+        ],
+        'PROFILE_FIELDS': [
+            'id',
+            'firstName',
+            'lastName',
+            'profilePicture'
         ]
     }
     

@@ -8,21 +8,28 @@ from django.contrib.auth.models import User
 from .models import referrer
 from django.http import HttpResponseRedirect
 from .forms import UserRegisterForm
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+
+def printCurrentUser(request):
+    print(request.user.email)
+    return 0
 
 # Create your views here.
 def becomeAReferer(request):
     submitted=False
+    
     if request.method=="POST":
         form=UserRegisterForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             return HttpResponseRedirect('/referers/')
-
-    form=UserRegisterForm
+    form = UserRegisterForm
     return render(request,'users/becomeAReferer.html',{'form':form})
 
 def registerReferer(request):
-    return render(request,'./users/becomeAReferer.html',{})
+    return render(request,'./users/becomeAReferer.html')
 
 '''def addReferer(request):
     return render(request,'users/becomeAReferer.html',{})'''

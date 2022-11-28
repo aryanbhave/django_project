@@ -1,0 +1,22 @@
+form{
+    display: flex;
+    width: 100vw;
+    height: 60vh;
+    background-color: #212529;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: x-large;
+}
+
+.jumbotron{
+    height: 30vh;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

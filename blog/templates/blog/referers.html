@@ -72,7 +72,7 @@ working at various companies also are keen on referring people as they are incen
           <h2 class="jumbotron-heading">Meet the Professionals</h2>
           <p class="lead text-muted">Everyone wants that Referral Bonus</p>
           <p>
-            <a class="ml-2" href="{% url 'registerReferer' %}">Become A Referer</a>
+            <a class="ml-2 btn btn-primary" href="{% url 'registerReferer' %}">Become A Referer</a>
           </p>
         </div>
       </section>
@@ -84,11 +84,9 @@ working at various companies also are keen on referring people as they are incen
             {%for i in list%}
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text text-center">{{i.username}}</p>
                   <p class="card-text text-center">{{i.lastName}}</p>
-                  <p class="card-text text-center">{{i.username}}</p>
                   <p class="card-text text-center">{{i.email}}</p>
                   <p class="card-text text-center">{{i.company}}</p>
                   <div class="d-flex justify-content-center align-items-center">
@@ -106,12 +104,12 @@ working at various companies also are keen on referring people as they are incen
 
     </main>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p>If </p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    <footer class="mastfoot mt-auto text-center">
+      <div class="inner">
+        <p>Brought to you by <a href="https://getbootstrap.com/">COEN241 Students</a> at <a href="https://www.scu.edu/">Santa Clara University</a>.</p>
       </div>
     </footer>
+  </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
