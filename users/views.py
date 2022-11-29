@@ -19,16 +19,32 @@ def printCurrentUser(request):
 # Create your views here.
 def becomeAReferer(request):
     submitted=False
-    
+    context={
+        'firstName':request.user.first_name,
+        'lastName':request.user.last_name,
+        'email':request.user.email
+    }
+    firstName=request.user.first_name,
+    lastName=request.user.last_name,
+    email=request.user.email
     if request.method=="POST":
-        form=UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/referers/')
-    form = UserRegisterForm
-    return render(request,'users/becomeAReferer.html',{'form':form})
+            ref = referrer()
+
+            ref.firstName = firstName
+            ref.lastName = lastName
+            ref.email = email
+            ref.university = request.POST.get("university")
+            ref.company = request.POST.get("company")
+            ref.role = request.POST.get("role")
+            ref.save()
+            return redirect('/referers')
+    else:
+
+        return render(request,'users/becomeAReferer.html',context)
 
 def registerReferer(request):
+    
+    
     return render(request,'./users/becomeAReferer.html')
 
 '''def addReferer(request):
