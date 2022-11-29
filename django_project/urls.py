@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('accounts/', include('allauth.urls')),
     #path('reactfrontend/',TemplateView.as_view(template_name='index.html')),
-   # path('register/', user_views.register, name='register'),
+    #path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login1.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     #path('profile/', user_views.profile, name='profile'),

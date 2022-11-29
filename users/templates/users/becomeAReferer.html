@@ -68,17 +68,28 @@ working at various companies also are keen on referring people as they are incen
           <p class="lead text-muted">Everyone wants that Referral Bonus</p>
       </section>
       <div class="formclass">
-        <form action='' method=POST id="formclass">
-          {%csrf_token%}
-          {{form.as_p}}
-          <input type="submit" value="submit" class="btn btn-primary">
+        <form action='' method=POST id="formclass" role="form">
+        {%csrf_token%}
+        <h4>First Name</h4>
+        <input name="firstName" value="{{firstName}} "disabled="disabled" >
+        <h4>Last Name</h4>
+        <input name="lastName"value="{{lastName}}" disabled="disabled" >
+        <h4>Email</h4>
+        <input name="email"  value="{{email}}" disabled="disabled"/>      
+        <h4>University</h4>
+        <input name="university" >
+        <h4>Company</h4>
+        <input name="company" >
+        <h4>Role</h4>
+        <input name="role" >
+        <input type="submit" value="submit" class="btn btn-primary">
       </form>
       </div>
      
       
     </main>
 
-    <footer class="mastfoot mt-auto">
+    <footer class="mastfoot mt-auto text-center">
       <div class="inner">
         <p>Brought to you by <a href="https://getbootstrap.com/">COEN241 Students</a> at <a href="https://www.scu.edu/">Santa Clara University</a>.</p>
       </div>
