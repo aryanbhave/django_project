@@ -5,63 +5,32 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .models import referrer
 from django.contrib.auth.models import User
-from .models import referrer
-from django.http import HttpResponseRedirect
-from .forms import UserRegisterForm
-from django.contrib.auth import get_user_model
-User = get_user_model()
-
-
-def printCurrentUser(request):
-    print(request.user.email)
-    return 0
 
 # Create your views here.
-def becomeAReferer(request):
-    submitted=False
-    
-    if request.method=="POST":
-        form=UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/referers/')
-    form = UserRegisterForm
-    return render(request,'users/becomeAReferer.html',{'form':form})
-
-def registerReferer(request):
-    return render(request,'./users/becomeAReferer.html')
-
-'''def addReferer(request):
-    return render(request,'users/becomeAReferer.html',{})'''
-
-
-'''def register(request):
+def register(request):
     if request.method == "POST":
-        
         form = UserRegisterForm(request.POST)
-        print('form created')
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
             
-            #Adding data to referrer table in RDS database
+            #Adding data to referrer table in database
             ref = referrer()
-            ref.firstName = form.cleaned_data.get("firstname")
-            ref.lastName = form.cleaned_data.get("lastname")
-            ref.university = form.cleaned_data.get("university")
-            ref.company = form.cleaned_data.get("company")
-            ref.role = form.cleaned_data.get("role")
-
+            ref.username = form.cleaned_data.get("username")
+            ref.firstName = form.cleaned_data.get("first_name")
+            ref.lastName = form.cleaned_data.get("last_name")
+            ref.email = form.cleaned_data.get("email")
+            ref.company = form.cleaned_data.get("groups")
             ref.save()
 
             messages.success(request, f'Your account has been created, you can proceed to login.')
-            return redirect('referers')
+            return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})'''
+    return render(request, 'users/register.html', {'form': form})
 
 
-'''@login_required
+@login_required
 def profile(request):
     if request.method == "POST":
         #Remove user from referrer database and auth users as well.
@@ -139,7 +108,7 @@ def profile(request):
         }
         return render(request, 'users/profile.html', {'userDB' : User.objects.all().filter(username=request.user.username), 'referrerDB' : referrer.objects.all().filter(username=request.user.username)})
 
-'''
+
 # def changeData(request, username, fieldTBU, queryInput):
 #     referrer.objects.all().filter(username=username).update(fieldTBU=queryInput)
 #     User.objects.all().filter(username=username).update(fieldTBU=queryInput)

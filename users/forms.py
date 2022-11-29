@@ -1,20 +1,15 @@
 from django import forms
-from django.forms import ModelForm
-from .models import referrer
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
-class UserRegisterForm(ModelForm):
-    firstName = forms.CharField(required=True)
-    lastName = forms.CharField(required=True)
-    username = forms.CharField(required=True)
-    email = forms.CharField(required=True)
-    university = forms.CharField(required=True)
-    company = forms.CharField(required=True)
-    role = forms.CharField(required=True)
-    linkedin=forms.CharField(required=True)
-
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    groups = forms.CharField(label='Company', required=True)
 
     class Meta:
-        model = referrer
-        fields = ('firstName', 'lastName','username','email', 'university', 'company', 'role', 'linkedin')
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email', 'groups', 'password1', 'password2']
 
-    
+
