@@ -98,7 +98,7 @@
                       <h3>Role</h3>
                       <span style="padding: 2px; font-weight: bold;">{{i.role}}</span>
                     </div>
-                    <a href="#" >Ask To Refer</a>
+                      <a class="btn btn-primary" href="{% url 'mailuser' mail=i.email %}" >Ask To Refer</a>
                   </div>
                 </div>
               </div>

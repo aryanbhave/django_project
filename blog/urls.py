@@ -7,4 +7,6 @@ urlpatterns = [
     path('', views.home, name='blog-home'),
     path('about/', views.about, name='blog-about'),
     path('referers/', views.referers, name='blog-referers'),
+    path('mailuser/<str:mail>', views.mailuser, name='mailuser'),
+
 ]
