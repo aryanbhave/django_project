@@ -50,5 +50,9 @@ def mailuser(request, mail):
         'cboggaram@scu.edu',
         [mail],
     )
-    messagebox.showinfo("Alert", "Your request for referral has been sent to the referrer " + mail)
+    alertmessage = "Your request for referral has been sent to the referrer " + mail
+    messages.success(request, alertmessage)
+    # messagebox.showinfo("Alert", "Your request for referral has been sent to the referrer " + mail)
     return referers(request)
+
+      

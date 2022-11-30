@@ -64,7 +64,16 @@
     </header>
 
     <main role="main">
-
+      {% if messages %}
+        <!-- {% for message in messages %} -->
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="True">&times;</span>
+              </button>
+              {{ message }}
+          </div>
+        <!-- {% endfor %} -->
+      {% endif %}
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Hello {%user_display user%}</h1>
