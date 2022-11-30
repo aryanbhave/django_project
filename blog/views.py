@@ -5,8 +5,6 @@ from users.models import referrer
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.contrib import messages
-import tkinter
-from tkinter import messagebox
 
 User = get_user_model()
 
@@ -39,8 +37,6 @@ def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
 def mailuser(request, mail):
-    root = tkinter.Tk()
-    root.withdraw()
     useremail = request.user.email
     first_name = request.user.first_name
     last_name = request.user.last_name
@@ -52,7 +48,6 @@ def mailuser(request, mail):
     )
     alertmessage = "Your request for referral has been sent to the referrer " + mail
     messages.success(request, alertmessage)
-    # messagebox.showinfo("Alert", "Your request for referral has been sent to the referrer " + mail)
     return referers(request)
 
       
