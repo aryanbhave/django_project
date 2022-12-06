@@ -6,7 +6,7 @@ We have used Django and AWS to build this project
 
 ![Course Creator Laptop iphone mockup instagram post](https://user-images.githubusercontent.com/29003696/205414144-a8b90468-45fe-4c72-ba43-c62ecd64ef3d.jpg)
 
-## The Authentication is handled by Linkedin OAuth.
+## The Authentication is handled by OAuth2.
 
 ![Minimalist Website Launch Computer Mockup Instagram Post (2)](https://user-images.githubusercontent.com/29003696/205414192-c6e808a8-d7b8-43d2-b3c8-b15fa8af0543.png)
 
